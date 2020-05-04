@@ -10,7 +10,7 @@ export default function Grid() {
 	useEffect(async () => {
 		function createBoard() {
 			const board = [];
-			for (let i = 0; i < 65; i++) {
+			for (let i = 0; i < 63; i++) {
 				board.push({
 					id: i,
 				});
@@ -19,15 +19,20 @@ export default function Grid() {
 		}
 		setboard(createBoard());
 	}, []);
-	console.log("board", board);
 	return (
 		<div className={styles.board}>
 			{board &&
 				board.map((data) => {
 					return (
-						<div key={data.id} className={styles.cell}>
-							{data.id}
-						</div>
+						<div
+							key={data.id}
+							className={styles.cell}
+							style={{
+								background:
+									data.id % 2 === 0 ? "white" : "black",
+								color: data.id % 2 == 0 ? "black" : "white",
+							}}
+						></div>
 					);
 				})}
 		</div>

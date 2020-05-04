@@ -4,16 +4,12 @@
 	flex-direction: $direction;
 }
 .board {
-	width: 100%;
-	border: 1px solid brown;
+	width: 1000px;
 	display: flex;
 	flex-wrap: wrap;
 	.cell {
-		width: 10%;
-		background: white;
-		&:nth-child(odd) {
-			background: black;
-			color: white;
-		}
+		border: 1px solid black;
+		width: 105px;
+		height: 100px;
 	}
 }

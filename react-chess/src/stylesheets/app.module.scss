@@ -1,0 +1,19 @@
+@mixin flex($content, $direction) {
+	display: flex;
+	justify-content: $content;
+	flex-direction: $direction;
+}
+.board {
+	width: 100%;
+	border: 1px solid brown;
+	display: flex;
+	flex-wrap: wrap;
+	.cell {
+		width: 10%;
+		background: white;
+		&:nth-child(odd) {
+			background: black;
+			color: white;
+		}
+	}
+}

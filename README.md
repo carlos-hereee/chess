@@ -8,9 +8,8 @@ URL here).
 🚫Add contributor info below, make sure add images and edit the social links for
 each member. Add to or delete these place-holders as needed
 
-| [Carlos Hernandez](https://github.com/) |
+[Carlos Hernandez](https://github.com/) |
 [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/)
-|
 
 <br>
 <br>

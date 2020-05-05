@@ -4,12 +4,12 @@
 	flex-direction: $direction;
 }
 .board {
-	width: 1000px;
+	width: 900px;
 	display: flex;
 	flex-wrap: wrap;
 	.cell {
 		border: 1px solid black;
-		width: 105px;
+		width: 100px;
 		height: 100px;
 	}
 }

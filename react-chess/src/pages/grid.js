@@ -1,24 +1,15 @@
 import React, { useState, useEffect } from "react";
-
-// import Board from "../data/board.json";
+import { createBoard } from "../components/createBoard";
 
 import styles from "../stylesheets/app.module.scss";
 
 export default function Grid() {
 	const [board, setboard] = useState();
+	const [newGame, setNewGame] = useState(true);
 
 	useEffect(async () => {
-		function createBoard() {
-			const board = [];
-			for (let i = 0; i < 63; i++) {
-				board.push({
-					id: i,
-				});
-			}
-			return board;
-		}
 		setboard(createBoard());
-	}, []);
+	}, [newGame]);
 	return (
 		<div className={styles.board}>
 			{board &&
@@ -27,12 +18,14 @@ export default function Grid() {
 						<div
 							key={data.id}
 							className={styles.cell}
-							style={{
-								background:
-									data.id % 2 === 0 ? "white" : "black",
-								color: data.id % 2 == 0 ? "black" : "white",
-							}}
-						></div>
+							// style={{
+							// 	background:
+							// 		data.id % 2 === 0 ? "white" : "black",
+							// 	color: data.id % 2 === 0 ? "black" : "white",
+							// }}
+						>
+							{data.piece}
+						</div>
 					);
 				})}
 		</div>

@@ -1,19 +1,20 @@
-import React, { useState, useEffect } from "react";
-import { createBoard } from "../components/createBoard";
+import React, { useState, useEffect, useContext } from "react";
+
+import { ChessContext } from "../utils/context/ChessState";
 
 import styles from "../stylesheets/app.module.scss";
 
 export default function Grid() {
-	const [board, setboard] = useState();
-	const [newGame, setNewGame] = useState(true);
+	const { newGame, chess } = useContext(ChessContext);
 
 	useEffect(async () => {
-		setboard(createBoard());
-	}, [newGame]);
+		newGame();
+	}, []);
+	console.log("bboard", chess);
 	return (
 		<div className={styles.board}>
-			{board &&
-				board.map((data) => {
+			{chess &&
+				chess.map((data) => {
 					return (
 						<div
 							key={data.id}

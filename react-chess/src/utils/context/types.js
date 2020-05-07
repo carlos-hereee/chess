@@ -1,0 +1,3 @@
+export const IS_LOADING = "IS_LOADING";
+export const START_GAME_SUCCESS = "START_GAME_SUCCESS";
+export const START_GAME_ERROR = "START_GAME_ERROR";

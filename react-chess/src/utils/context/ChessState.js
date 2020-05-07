@@ -1,10 +1,10 @@
 import React, { createContext, useReducer, useEffect } from "react";
 
 import { reducer } from "./reducer";
-import { IS_LOADING } from "./types";
+import { IS_LOADING, START_GAME_SUCCESS, START_GAME_ERROR } from "./types";
 import { axiosWithAuth, client } from "../axiosWithAuth";
 
-import { loadState, saveState } from "../localStorage";
+// import { loadState, saveState } from "./localStorage";
 
 export const ChessContext = createContext();
 
@@ -26,18 +26,29 @@ export const ChessState = (props) => {
 	const initialState = { isLoading: false, chess: [] };
 
 	// get updated state from localStorage
-	const localState = loadState("chess");
+	// const localState = loadState("chess");
 
 	// use reducer on local state or start fresh with initial state
-	const [state, dispatch] = useReducer(reducer, localState || initialState);
+	const [state, dispatch] = useReducer(reducer, initialState);
 
-	useEffect(() => {
-		saveState("chess", state);
-	}, [state]);
+	// useEffect(() => {
+	// 	saveState("chess", state);
+	// }, [state]);
+	const newGame = async () => {
+		dispatch({ type: IS_LOADING, payload: true });
+		try {
+			const res = await client().get(`/chess/`);
+			console.log("res", res);
+			dispatch({ type: START_GAME_SUCCESS, payload: res.data.newGame });
+		} catch (e) {
+			console.log("error", e);
+			dispatch({ type: START_GAME_ERROR, payload: e.response });
+		}
+	};
 
 	return (
 		<ChessContext.Provider
-			value={{ chess: state.chess, isLoading: state.isLoading }}
+			value={{ chess: state.chess, isLoading: state.isLoading, newGame }}
 		>
 			{props.children}
 		</ChessContext.Provider>

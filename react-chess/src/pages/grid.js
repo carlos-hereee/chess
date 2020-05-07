@@ -18,11 +18,9 @@ export default function Grid() {
 						<div
 							key={data.id}
 							className={styles.cell}
-							// style={{
-							// 	background:
-							// 		data.id % 2 === 0 ? "white" : "black",
-							// 	color: data.id % 2 === 0 ? "black" : "white",
-							// }}
+							onClick={() => {
+								console.log("e", data);
+							}}
 						>
 							{data.piece}
 						</div>

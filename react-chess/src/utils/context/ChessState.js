@@ -38,10 +38,8 @@ export const ChessState = (props) => {
 		dispatch({ type: IS_LOADING, payload: true });
 		try {
 			const res = await client().get(`/chess/`);
-			console.log("res", res);
 			dispatch({ type: START_GAME_SUCCESS, payload: res.data.newGame });
 		} catch (e) {
-			console.log("error", e);
 			dispatch({ type: START_GAME_ERROR, payload: e.response });
 		}
 	};

@@ -1,4 +1,4 @@
-import { IS_LOADING, START_GAME_SUCCESS, START_GAME_ERROR } from "./types";
+import { IS_LOADING, START_GAME_SUCCESS, START_GAME_ERROR } from "../types";
 // updates the state
 const setIsLoading = (state, action) => {
 	return {

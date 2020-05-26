@@ -1,9 +1,9 @@
 import React from "react";
 
+import HasToken from "../components/hasToken";
+import AuthPage from "../components/AuthPage";
 export default function Home() {
-	return (
-		<div>
-			<button>Play Game</button>
-		</div>
-	);
+	const token = localStorage.getItem("token");
+
+	return <div>{token ? <HasToken /> : <AuthPage />}</div>;
 }

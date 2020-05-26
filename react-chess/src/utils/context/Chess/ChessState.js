@@ -1,8 +1,8 @@
 import React, { createContext, useReducer, useEffect } from "react";
 
 import { reducer } from "./reducer";
-import { IS_LOADING, START_GAME_SUCCESS, START_GAME_ERROR } from "./types";
-import { axiosWithAuth, client } from "../axiosWithAuth";
+import { IS_LOADING, START_GAME_SUCCESS, START_GAME_ERROR } from "../types";
+import { axiosWithAuth, client } from "../../axiosWithAuth";
 
 // import { loadState, saveState } from "./localStorage";
 

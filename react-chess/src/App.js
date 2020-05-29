@@ -10,11 +10,11 @@ import Fotter from "./pages/footer";
 import PrivateRoute from "./utils/PrivateRoute";
 import { ChessState } from "./utils/context/Chess/ChessState";
 
-import "./App.css";
+import styles from "./stylesheets/app.module.scss";
 
 function App() {
 	return (
-		<div className="App">
+		<div className={styles.App}>
 			<Header />
 			<h1>Chess App</h1>
 			<Route exact path="/" component={Home} />

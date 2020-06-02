@@ -5,6 +5,7 @@ import Game from "./pages/game";
 import Home from "./pages/home";
 import Header from "./pages/header";
 import Profile from "./pages/profile";
+import Login from "./components/login";
 import Fotter from "./pages/footer";
 
 import PrivateRoute from "./utils/PrivateRoute";
@@ -20,6 +21,7 @@ function App() {
 			<AuthState>
 				<h1>Chess App</h1>
 				<Route exact path="/" component={Home} />
+				<Route path="/login" component={Login} />
 				<Route path="/user" component={Profile} />
 				<PrivateRoute path="/game">
 					<ChessState>

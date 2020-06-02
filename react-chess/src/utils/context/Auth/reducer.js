@@ -7,7 +7,7 @@ import {
 	SIGNOUT_SUCCESS,
 	SIGNOUT_FAILURE,
 	SET_CURRENT_USER,
-} from "./types";
+} from "../types";
 
 const setIsLoading = (state, action) => {
 	return {

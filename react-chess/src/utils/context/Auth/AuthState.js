@@ -14,7 +14,7 @@ import authReducer from "./reducer";
 
 import { client } from "../../axiosWithAuth";
 
-// import { loadState, saveState, removeState } from "../../localStorage";
+import { loadState, saveState, removeState } from "../../localStorage";
 
 export const AuthContext = createContext();
 
@@ -26,13 +26,16 @@ export const AuthState = (props) => {
 		userProfile: null,
 	};
 
-	// const localState = loadState("auth");
+	const localState = loadState("auth");
 
-	const [state, dispatch] = useReducer(authReducer, initialState);
+	const [state, dispatch] = useReducer(
+		authReducer,
+		localState || initialState
+	);
 
-	// useEffect(() => {
-	// 	saveState("auth", state);
-	// }, [state]);
+	useEffect(() => {
+		saveState("auth", state);
+	}, [state]);
 
 	const signUpUser = async (values) => {
 		dispatch({ type: IS_LOADING, payload: true });

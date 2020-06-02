@@ -4,6 +4,10 @@
 	padding: 1rem 0;
 	text-align: right;
 	color: white;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+	cursor: pointer;
 
 	a {
 		color: white;

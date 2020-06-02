@@ -13,7 +13,7 @@ export default function Header() {
 	}
 	return (
 		<>
-			{!token ? (
+			{token ? (
 				<div className={styles.header}>
 					<div>
 						<Link to="/">Home</Link>
@@ -21,9 +21,7 @@ export default function Header() {
 					<div>
 						<Link to="/user">Profile</Link>
 					</div>
-					<div>
-						<p onClick={signOut}>Sign Out</p>
-					</div>
+					<div onClick={signOut}>Sign Out</div>
 				</div>
 			) : (
 				<div className={styles.header}>

@@ -1,33 +1,13 @@
 import React, { useContext } from "react";
+import { Link } from "react-router-dom";
 import { Formik, Form, Field } from "formik";
 import { Loader } from "semantic-ui-react";
 
 import { AuthContext } from "../utils/context/Auth/AuthState";
+import { validateEmail, validatePassword } from "../utils/validateAuth";
 
 import styles from "../stylesheets/app.module.scss";
-import { Link } from "react-router-dom";
 
-function validateEmail(value) {
-	let error;
-	if (!value) {
-		error = "*Required";
-	} else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)) {
-		error = "*Invalid email address";
-	}
-	return error;
-}
-function validatePassword(values) {
-	let error = {};
-	const passwordRegex = /(?=.*[0-9])/;
-	if (!values) {
-		error = "*Required";
-	} else if (values.length < 8) {
-		error = "*Password must be 8 characters long.";
-	} else if (!passwordRegex.test(values)) {
-		error = "*Invalid password. Must contain one number.";
-	}
-	return error;
-}
 const SignIn = () => {
 	const { isLoading, signIn } = useContext(AuthContext);
 	return (

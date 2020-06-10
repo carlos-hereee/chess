@@ -4,7 +4,12 @@ import { Formik, Form, Field } from "formik";
 import { Loader } from "semantic-ui-react";
 
 import { AuthContext } from "../utils/context/Auth/AuthState";
-import { validateEmail, validatePassword } from "../utils/validateAuth";
+import {
+	validateEmail,
+	validatePassword,
+	validateUsername,
+	confirmPassword,
+} from "../utils/validateAuth";
 
 import styles from "../stylesheets/app.module.scss";
 
@@ -20,16 +25,17 @@ export default function Register() {
 					password: "",
 					confirmPassword: "",
 				}}
-				onSubmit={(values, actions) => {
+				onSubmit={(values, actions, { validate }) => {
+					validate(values);
 					register(values);
 					actions.resetForm();
 				}}
 			>
 				{({ errors, touched, validateForm }) => (
 					<Form className={styles.form}>
-						{errors.email && touched.email && (
+						{errors.username && touched.username && (
 							<div className={styles.validate}>
-								{errors.email}
+								{errors.username}
 							</div>
 						)}
 						<br />
@@ -41,18 +47,47 @@ export default function Register() {
 						/>
 						<br />
 						<br />
+						{errors.email && touched.email && (
+							<div className={styles.validate}>
+								{errors.email}
+							</div>
+						)}
+						<br />
 						<label>Email </label>
-						<Field type="text" name="email" />
+						<Field
+							type="text"
+							name="email"
+							validate={validateEmail}
+						/>
+						<br />
+						<br />
 						{errors.password && touched.password && (
 							<div className={styles.validate}>
 								{errors.password}
 							</div>
 						)}
-
+						<br />
 						<label>Password </label>
-						<Field type="password" name="password" />
+						<Field
+							type="password"
+							name="password"
+							validate={validatePassword}
+						/>
+						<br />
+						<br />
+						{errors.confirmPassword && touched.confirmPassword && (
+							<div className={styles.validate}>
+								{errors.confirmPassword}
+							</div>
+						)}
+						<br />
 						<label>Confirm Password </label>
-						<Field type="password" name="confirmPassword" />
+						<Field
+							type="password"
+							name="confirmPassword"
+							validatePassword={confirmPassword}
+						/>
+						<br />
 						<button type="submit" onClick={() => validateForm()}>
 							{!isLoading ? "Register" : <Loader />}
 						</button>

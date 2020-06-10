@@ -19,3 +19,16 @@ export function validatePassword(values) {
 	}
 	return error;
 }
+export function validateUsername(value) {
+	let error;
+	if (!value) {
+		error = "*Required";
+	} else if (value === "admin") {
+		error = "Nice try!";
+	}
+	return error;
+}
+export function confirmPassword(value) {
+	console.log("value", value);
+	let error;
+}

@@ -28,7 +28,12 @@ export function validateUsername(value) {
 	}
 	return error;
 }
-export function confirmPassword(value) {
-	console.log("value", value);
-	let error;
-}
+export const validateConfirmPassword = (pass, value) => {
+	let error = "";
+	if (pass && value) {
+		if (pass !== value) {
+			error = "Password not matched";
+		}
+	}
+	return error;
+};

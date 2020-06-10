@@ -8,7 +8,7 @@ import {
 	validateEmail,
 	validatePassword,
 	validateUsername,
-	confirmPassword,
+	validateConfirmPassword,
 } from "../utils/validateAuth";
 
 import styles from "../stylesheets/app.module.scss";
@@ -31,7 +31,7 @@ export default function Register() {
 					actions.resetForm();
 				}}
 			>
-				{({ errors, touched, validateForm }) => (
+				{({ errors, touched, validateForm, values }) => (
 					<Form className={styles.form}>
 						{errors.username && touched.username && (
 							<div className={styles.validate}>
@@ -85,7 +85,9 @@ export default function Register() {
 						<Field
 							type="password"
 							name="confirmPassword"
-							validatePassword={confirmPassword}
+							validate={(value) =>
+								validateConfirmPassword(values.password, value)
+							}
 						/>
 						<br />
 						<button type="submit" onClick={() => validateForm()}>

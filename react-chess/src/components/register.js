@@ -33,12 +33,12 @@ export default function Register() {
 			>
 				{({ errors, touched, validateForm, values }) => (
 					<Form className={styles.form}>
+						<br />
 						{errors.username && touched.username && (
 							<div className={styles.validate}>
 								{errors.username}
 							</div>
 						)}
-						<br />
 						<label>Username </label>
 						<Field
 							type="text"
@@ -46,13 +46,11 @@ export default function Register() {
 							validate={validateUsername}
 						/>
 						<br />
-						<br />
 						{errors.email && touched.email && (
 							<div className={styles.validate}>
 								{errors.email}
 							</div>
 						)}
-						<br />
 						<label>Email </label>
 						<Field
 							type="text"
@@ -60,13 +58,11 @@ export default function Register() {
 							validate={validateEmail}
 						/>
 						<br />
-						<br />
 						{errors.password && touched.password && (
 							<div className={styles.validate}>
 								{errors.password}
 							</div>
 						)}
-						<br />
 						<label>Password </label>
 						<Field
 							type="password"
@@ -74,13 +70,11 @@ export default function Register() {
 							validate={validatePassword}
 						/>
 						<br />
-						<br />
 						{errors.confirmPassword && touched.confirmPassword && (
 							<div className={styles.validate}>
 								{errors.confirmPassword}
 							</div>
 						)}
-						<br />
 						<label>Confirm Password </label>
 						<Field
 							type="password"
@@ -96,6 +90,7 @@ export default function Register() {
 					</Form>
 				)}
 			</Formik>
+			<br />
 			<Link to="/login"> Already have an account? </Link>
 		</div>
 	);

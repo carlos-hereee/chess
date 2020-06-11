@@ -11,7 +11,7 @@ import {
 	validateConfirmPassword,
 } from "../utils/validateAuth";
 
-import styles from "../stylesheets/app.module.scss";
+import styles from "../stylesheets/auth.module.scss";
 
 export default function Register() {
 	const { isLoading, register } = useContext(AuthContext);

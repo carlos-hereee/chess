@@ -1,7 +1,7 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { Formik, Form, Field } from "formik";
-import { Loader } from "semantic-ui-react";
+import { Loader, Icon } from "semantic-ui-react";
 
 import { AuthContext } from "../utils/context/Auth/AuthState";
 import {
@@ -15,6 +15,9 @@ import styles from "../stylesheets/app.module.scss";
 
 export default function Register() {
 	const { isLoading, register } = useContext(AuthContext);
+	const [canSeePassword, setCanSeePassword] = useState(false);
+	const [canSeeConfirmPassword, setcanSeeConfirmPassword] = useState(false);
+
 	return (
 		<div className={styles.wrapper}>
 			<h1>Register</h1>
@@ -64,11 +67,21 @@ export default function Register() {
 							</div>
 						)}
 						<label>Password </label>
-						<Field
-							type="password"
-							name="password"
-							validate={validatePassword}
-						/>
+						<div className={styles.password}>
+							<Field
+								type={canSeePassword ? "text" : "password"}
+								name="password"
+								validate={validatePassword}
+							/>
+							<Icon
+								size="big"
+								className={styles.icon}
+								name={canSeePassword ? "eye slash" : "eye"}
+								onClick={() =>
+									setCanSeePassword(!canSeePassword)
+								}
+							/>
+						</div>
 						<br />
 						{errors.confirmPassword && touched.confirmPassword && (
 							<div className={styles.validate}>
@@ -76,13 +89,33 @@ export default function Register() {
 							</div>
 						)}
 						<label>Confirm Password </label>
-						<Field
-							type="password"
-							name="confirmPassword"
-							validate={(value) =>
-								validateConfirmPassword(values.password, value)
-							}
-						/>
+						<div className={styles.password}>
+							<Field
+								type={
+									canSeeConfirmPassword ? "text" : "password"
+								}
+								name="confirmPassword"
+								validate={(value) =>
+									validateConfirmPassword(
+										values.password,
+										value
+									)
+								}
+							/>
+							<Icon
+								size="big"
+								className={styles.icon}
+								name={
+									canSeeConfirmPassword ? "eye slash" : "eye"
+								}
+								onClick={() =>
+									setcanSeeConfirmPassword(
+										!canSeeConfirmPassword
+									)
+								}
+							/>
+						</div>
+
 						<br />
 						<button type="submit" onClick={() => validateForm()}>
 							{!isLoading ? "Register" : <Loader />}

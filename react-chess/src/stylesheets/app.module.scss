@@ -21,6 +21,15 @@
 	text-align: left;
 	margin: auto;
 	width: 450px;
+	.password {
+		@include flex(center, row);
+		.icon {
+			margin: auto 0 auto 5px;
+		}
+		input {
+			width: 100%;
+		}
+	}
 	input {
 		padding: 10px 20px;
 		margin: 8px 0;

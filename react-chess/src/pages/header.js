@@ -16,7 +16,7 @@ export default function Header() {
 			{token ? (
 				<div className={styles.header}>
 					<div>
-						<Link to="/">Home</Link>
+						<Link to="/">Chess App</Link>
 					</div>
 					<div>
 						<Link to="/user">Profile</Link>
@@ -25,8 +25,13 @@ export default function Header() {
 				</div>
 			) : (
 				<div className={styles.header}>
-					<Link to="/">Home</Link>
-					<Link to="/login">Sign In</Link>
+					<div>
+						<Link to="/">Chess App</Link>
+					</div>
+					<div>
+						<Link to="/">Home</Link>
+						<Link to="/login">Sign In</Link>
+					</div>
 				</div>
 			)}
 		</>

@@ -15,7 +15,7 @@ export default function Home() {
 			) : (
 				<div className={style.home}>
 					<div>
-						Would you like to play as a
+						Would you like to play as a{" "}
 						<Link to="/guest"> Guest</Link>
 					</div>
 					<br />

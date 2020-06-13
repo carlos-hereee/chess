@@ -20,7 +20,6 @@ function App() {
 		<div className={styles.App}>
 			<Header />
 			<AuthState>
-				<h1>Chess App</h1>
 				<Switch>
 					<Route exact path="/" component={Home} />
 					<Route path="/login" component={Login} />

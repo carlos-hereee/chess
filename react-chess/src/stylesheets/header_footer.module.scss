@@ -1,14 +1,14 @@
-.header {
-	background-color: #313131;
-	border: 1px solid black;
-	padding: 1rem 0;
-	text-align: right;
-	color: white;
+@mixin flex($content, $direction) {
 	display: flex;
-	flex-direction: row;
-	justify-content: flex-end;
+	justify-content: $content;
+	flex-direction: $direction;
+}
+.header {
+	@include flex(space-between, row);
+	background-color: #313131;
+	padding: 1rem 0;
+	color: white;
 	cursor: pointer;
-
 	a {
 		color: white;
 		padding: 0.5rem;

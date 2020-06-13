@@ -1,8 +1,5 @@
-@mixin flex($content, $direction) {
-	display: flex;
-	justify-content: $content;
-	flex-direction: $direction;
-}
+@import "./mixins.scss";
+
 .header {
 	@include flex(space-between, row);
 	background-color: #313131;

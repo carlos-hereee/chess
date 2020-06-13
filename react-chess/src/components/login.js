@@ -9,7 +9,7 @@ import {
 	validatePassword,
 } from "../utils/validateAuth";
 
-import styles from "../stylesheets/auth.module.scss";
+import styles from "../stylesheets/app.module.scss";
 
 const SignIn = () => {
 	const { isLoading, signIn } = useContext(AuthContext);

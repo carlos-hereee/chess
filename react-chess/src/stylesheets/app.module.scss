@@ -1,8 +1,4 @@
-@mixin flex($content, $direction) {
-	display: flex;
-	justify-content: $content;
-	flex-direction: $direction;
-}
+@import "./mixins.scss";
 .App {
 	background: white;
 	max-width: 1000px;

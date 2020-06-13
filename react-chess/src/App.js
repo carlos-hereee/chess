@@ -13,7 +13,7 @@ import PrivateRoute from "./utils/PrivateRoute";
 import { AuthState } from "./utils/context/Auth/AuthState";
 import { ChessState } from "./utils/context/Chess/ChessState";
 
-import styles from "./stylesheets/auth.module.scss";
+import styles from "./stylesheets/app.module.scss";
 
 function App() {
 	return (

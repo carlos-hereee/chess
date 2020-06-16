@@ -24,12 +24,10 @@ function App() {
 					<Route exact path="/" component={Home} />
 					<Route path="/login" component={Login} />
 					<Route path="/register" component={Register} />
-					<Route path="/user" component={Profile} />
-					<PrivateRoute path="/game">
-						<ChessState>
-							<Game />
-						</ChessState>
-					</PrivateRoute>
+					<ChessState>
+						<PrivateRoute path="/game" component={Game} />
+						<PrivateRoute path="/user" component={Profile} />
+					</ChessState>
 				</Switch>
 			</AuthState>
 			<Fotter />

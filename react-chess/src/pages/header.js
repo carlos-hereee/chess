@@ -6,7 +6,7 @@ import { removeState } from "../utils/localStorage";
 import styles from "../stylesheets/header_footer.module.scss";
 
 export default function Header() {
-	const token = localStorage.getItem("token");
+	const token = localStorage.getItem("accessToken");
 
 	function signOut() {
 		removeState();

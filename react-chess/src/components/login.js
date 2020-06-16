@@ -4,10 +4,7 @@ import { Formik, Form, Field } from "formik";
 import { Loader, Icon } from "semantic-ui-react";
 
 import { AuthContext } from "../utils/context/Auth/AuthState";
-import {
-	validateEmailOrUsername,
-	validatePassword,
-} from "../utils/validateAuth";
+import { validateUsername, validatePassword } from "../utils/validateAuth";
 
 import styles from "../stylesheets/app.module.scss";
 
@@ -22,22 +19,22 @@ const SignIn = () => {
 				initialValues={{ username: "", password: "" }}
 				onSubmit={(values, actions) => {
 					signIn(values);
-					actions.resetForm();
+					// actions.resetForm();
 				}}
 			>
 				{({ errors, touched, validateForm }) => (
 					<Form className={styles.form}>
 						<br />
-						{errors.email && touched.email && (
+						{errors.username && touched.username && (
 							<div className={styles.validate}>
-								{errors.email}
+								{errors.username}
 							</div>
 						)}
 						<label>Username </label>
 						<Field
 							type="text"
-							name="email"
-							validate={validateEmailOrUsername}
+							name="username"
+							validate={validateUsername}
 						/>
 						<br />
 						{errors.password && touched.password && (

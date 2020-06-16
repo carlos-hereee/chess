@@ -17,7 +17,7 @@ export function validateEmailOrUsername(value) {
 	return error;
 }
 export function validatePassword(values) {
-	let error = {};
+	let error;
 	const passwordRegex = /(?=.*[0-9])/;
 	if (!values) {
 		error = "*Password is a Required Field";

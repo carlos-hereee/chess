@@ -28,8 +28,7 @@ export default function Register() {
 					password: "",
 					confirmPassword: "",
 				}}
-				onSubmit={(values, actions, { validate }) => {
-					validate(values);
+				onSubmit={(values, actions) => {
 					register(values);
 					actions.resetForm();
 				}}

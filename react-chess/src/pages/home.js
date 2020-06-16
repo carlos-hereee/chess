@@ -6,7 +6,7 @@ import HasToken from "../components/hasToken";
 import style from "../stylesheets/home.module.scss";
 
 export default function Home() {
-	const token = localStorage.getItem("token");
+	const token = localStorage.getItem("accessToken");
 
 	return (
 		<div>

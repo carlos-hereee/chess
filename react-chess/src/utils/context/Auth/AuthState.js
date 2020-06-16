@@ -26,7 +26,7 @@ export const AuthState = (props) => {
 		userProfile: null,
 	};
 
-	const localState = loadState("auth");
+	const localState = loadState("accessToken");
 
 	const [state, dispatch] = useReducer(
 		authReducer,
@@ -34,14 +34,18 @@ export const AuthState = (props) => {
 	);
 
 	useEffect(() => {
-		saveState("auth", state);
+		saveState("accessToken", state);
 	}, [state]);
 
-	const signUpUser = async (values) => {
+	const register = async (values) => {
 		dispatch({ type: IS_LOADING, payload: true });
+		const credential = {
+			username: values.username,
+			email: values.email,
+			password: values.password,
+		};
 		try {
-			const response = await client.post("/auth/register", values);
-
+			const response = await client().post("/user/register", credential);
 			dispatch({ type: SIGNUP_SUCCESS, payload: response.data });
 		} catch (error) {
 			console.log(error);
@@ -49,10 +53,9 @@ export const AuthState = (props) => {
 		}
 	};
 	const signIn = async (credential) => {
-		console.log("credential", credential);
 		dispatch({ type: IS_LOADING, payload: true });
 		try {
-			const response = await client.post("/auth/login", credential);
+			const response = await client().post("/user/login", credential);
 			dispatch({ type: SIGNIN_SUCCESS, payload: response.data });
 		} catch (error) {
 			dispatch({ type: SIGNIN_FAILURE, payload: error });
@@ -75,7 +78,7 @@ export const AuthState = (props) => {
 				isLoading: state.isLoading,
 				userProfile: state.userProfile,
 				signIn,
-				signUpUser,
+				register,
 				signOut,
 			}}
 		>
